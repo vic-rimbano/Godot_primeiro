@@ -1,5 +1,6 @@
 extends Area2D
 
+signal hit 
 const SPEED := 400 
 @onready var screen_size = get_viewport_rect().size
 @onready var anim = $Anim
@@ -34,3 +35,9 @@ func _process(delta):
 			
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+# verificação da colição do inimigo com o personagem 
+func _on_body_entered(body):
+	hide()
+	hit.emit()
+	collision.set_deferred("disabled", true)
