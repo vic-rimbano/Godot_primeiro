@@ -8,7 +8,7 @@ const SPEED := 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,3 +41,8 @@ func _on_body_entered(body):
 	hide()
 	hit.emit()
 	collision.set_deferred("disabled", true)
+
+func start_pos(pos):
+	position = pos
+	show()
+	collision.disaled = false

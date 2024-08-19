@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://tjhs2ootmkdc"]
+
+[ext_resource type="PackedScene" uid="uid://byyf6q6fbi2y7" path="res://preFabs/player.tscn" id="1_vd163"]
+[ext_resource type="PackedScene" uid="uid://dleg04yto1gkv" path="res://inimigo.tscn" id="2_kjcjt"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_vd163")]
+position = Vector2(370, 277)
+
+[node name="inimigo" parent="." instance=ExtResource("2_kjcjt")]
+position = Vector2(203, 221)
+
+[node name="inimigo2" parent="." instance=ExtResource("2_kjcjt")]
+position = Vector2(669, 60)
+
+[node name="inimigo3" parent="." instance=ExtResource("2_kjcjt")]
+position = Vector2(387, 1)
