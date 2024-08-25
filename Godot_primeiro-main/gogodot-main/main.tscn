@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://tjhs2ootmkdc"]
+
+[ext_resource type="PackedScene" uid="uid://byyf6q6fbi2y7" path="res://preFabs/player.tscn" id="1_rrxpb"]
+
+[sub_resource type="Curve2D" id="Curve2D_v7lar"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 488, 728, 0, 0, 0, 0, 0, 728, 0, 0, 0, 0, 0, -8)
+}
+point_count = 5
+
+[node name="main" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_rrxpb")]
+position = Vector2(-348, -107)
+
+[node name="bugTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="startTimer" type="Timer" parent="."]
+
+[node name="scoreTimer" type="Timer" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_v7lar")
+
+[node name="bugLocalizacao" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -8)
+rotation = 0.0166651

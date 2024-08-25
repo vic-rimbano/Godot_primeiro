@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dleg04yto1gkv"]
+
+[ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_333sc"]
+[ext_resource type="Texture2D" uid="uid://8moul5k4lp4b" path="res://assets/yellow_beetle.png" id="1_l8ss7"]
+[ext_resource type="Texture2D" uid="uid://cel513wglmtm" path="res://assets/blue_beetle.png" id="2_unx6a"]
+[ext_resource type="Texture2D" uid="uid://brhog1m1jtuq2" path="res://assets/red_beetle.png" id="3_xjcln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jo4pk"]
+radius = 46.0109
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gp7bh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8ss7")
+}],
+"loop": true,
+"name": &"besouro_amarelo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_unx6a")
+}],
+"loop": true,
+"name": &"besouro_azul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xjcln")
+}],
+"loop": true,
+"name": &"besouro_vermelho",
+"speed": 5.0
+}]
+
+[node name="inimigo" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_333sc")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(307, 197)
+shape = SubResource("CircleShape2D_jo4pk")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(317, 197)
+sprite_frames = SubResource("SpriteFrames_gp7bh")
+animation = &"besouro_azul"
+
+[node name="visivel" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(310, 195)
+scale = Vector2(2.1, 2.5)
+
+[connection signal="screen_exited" from="visivel" to="." method="_on_visivel_screen_exited"]
