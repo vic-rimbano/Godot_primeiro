@@ -1,18 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://dleg04yto1gkv"]
 
 [ext_resource type="Script" path="res://scripts/inimigo.gd" id="1_333sc"]
-[ext_resource type="Texture2D" uid="uid://8moul5k4lp4b" path="res://assets/yellow_beetle.png" id="1_l8ss7"]
-[ext_resource type="Texture2D" uid="uid://cel513wglmtm" path="res://assets/blue_beetle.png" id="2_unx6a"]
-[ext_resource type="Texture2D" uid="uid://brhog1m1jtuq2" path="res://assets/red_beetle.png" id="3_xjcln"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jo4pk"]
-radius = 46.0109
+[ext_resource type="Texture2D" uid="uid://1fs63cfwwsu1" path="res://assets/inimigoGodot.jpeg" id="2_7lj5y"]
+[ext_resource type="Texture2D" uid="uid://bryr1vv0skbpd" path="res://assets/inimigoAzul.jpeg" id="3_e8njt"]
+[ext_resource type="Texture2D" uid="uid://beaodhvcemrhm" path="res://assets/inimigoPrimavera.jpeg" id="4_nra88"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gp7bh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_l8ss7")
+"texture": ExtResource("2_7lj5y")
 }],
 "loop": true,
 "name": &"besouro_amarelo",
@@ -20,7 +17,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_unx6a")
+"texture": ExtResource("3_e8njt")
 }],
 "loop": true,
 "name": &"besouro_azul",
@@ -28,25 +25,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_xjcln")
+"texture": ExtResource("4_nra88")
 }],
 "loop": true,
 "name": &"besouro_vermelho",
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ied82"]
+size = Vector2(38, 56)
+
 [node name="inimigo" type="RigidBody2D"]
+collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_333sc")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(307, 197)
-shape = SubResource("CircleShape2D_jo4pk")
-
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(317, 197)
+position = Vector2(7, -11.0938)
+scale = Vector2(0.0527778, 0.0438965)
 sprite_frames = SubResource("SpriteFrames_gp7bh")
-animation = &"besouro_azul"
+animation = &"besouro_vermelho"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(7, -11)
+shape = SubResource("RectangleShape2D_ied82")
 
 [node name="visivel" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(310, 195)

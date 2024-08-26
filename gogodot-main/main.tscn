@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://ctqq3uxe0bvn7"]
+[gd_scene load_steps=5 format=3 uid="uid://tjhs2ootmkdc"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://main.gd" id="1_b5l54"]
+[ext_resource type="PackedScene" uid="uid://byyf6q6fbi2y7" path="res://preFabs/player.tscn" id="1_rrxpb"]
+[ext_resource type="PackedScene" uid="uid://dleg04yto1gkv" path="res://inimigo.tscn" id="2_pf5kq"]
+
+[sub_resource type="Curve2D" id="Curve2D_v7lar"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 488, 728, 0, 0, 0, 0, 0, 728, 0, 0, 0, 0, 0, -8)
+}
+point_count = 5
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_b5l54")
+bug_scene = ExtResource("2_pf5kq")
+
+[node name="player" parent="." instance=ExtResource("1_rrxpb")]
+position = Vector2(-348, -107)
+
+[node name="bugTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="startTimer" type="Timer" parent="."]
+
+[node name="scoreTimer" type="Timer" parent="."]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_v7lar")
+
+[node name="bugLocalizacao" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -8)
+rotation = 0.0166651
+
+[connection signal="hit" from="player" to="." method="game_over"]
+[connection signal="timeout" from="bugTimer" to="." method="_on_bug_timer_timeout"]
+[connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
