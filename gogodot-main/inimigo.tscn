@@ -36,6 +36,7 @@ animations = [{
 size = Vector2(38, 56)
 
 [node name="inimigo" type="RigidBody2D"]
+position = Vector2(-5, 10)
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_333sc")
@@ -51,7 +52,7 @@ position = Vector2(7, -11)
 shape = SubResource("RectangleShape2D_ied82")
 
 [node name="visivel" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(310, 195)
+position = Vector2(7.00006, -11)
 scale = Vector2(2.1, 2.5)
 
 [connection signal="screen_exited" from="visivel" to="." method="_on_visivel_screen_exited"]

@@ -45,4 +45,4 @@ func _on_body_entered(body):
 func start_pos(pos):
 	position = pos
 	show()
-	collision.disaled = false
+	collision.disabled = false

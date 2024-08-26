@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://tjhs2ootmkdc"]
+[gd_scene load_steps=6 format=3 uid="uid://tjhs2ootmkdc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b5l54"]
 [ext_resource type="PackedScene" uid="uid://byyf6q6fbi2y7" path="res://preFabs/player.tscn" id="1_rrxpb"]
 [ext_resource type="PackedScene" uid="uid://dleg04yto1gkv" path="res://inimigo.tscn" id="2_pf5kq"]
+[ext_resource type="PackedScene" uid="uid://xljhxfdknfjm" path="res://preFabs/hud.tscn" id="3_ma6rb"]
 
 [sub_resource type="Curve2D" id="Curve2D_v7lar"]
 _data = {
@@ -14,6 +15,8 @@ point_count = 5
 script = ExtResource("1_b5l54")
 bug_scene = ExtResource("2_pf5kq")
 
+[node name="HUD" parent="." instance=ExtResource("3_ma6rb")]
+
 [node name="player" parent="." instance=ExtResource("1_rrxpb")]
 position = Vector2(-348, -107)
 
@@ -24,13 +27,17 @@ wait_time = 0.5
 
 [node name="scoreTimer" type="Timer" parent="."]
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="BugPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_v7lar")
 
-[node name="bugLocalizacao" type="PathFollow2D" parent="Path2D"]
+[node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
 position = Vector2(0, -8)
 rotation = 0.0166651
 
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 360)
+
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="bugTimer" to="." method="_on_bug_timer_timeout"]
 [connection signal="timeout" from="startTimer" to="." method="_on_start_timer_timeout"]

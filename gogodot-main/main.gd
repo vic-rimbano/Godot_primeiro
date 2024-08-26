@@ -3,20 +3,22 @@ extends Node2D
 @export var bug_scene : PackedScene
 var score 
 
-func _ready():
-	new_game()
-	
-func game_over():
-	$BugTimer.stop()
-	$ScoreTimer.stop()
 
+func game_over():
+	$bugTimer.stop()
+	$scoreTimer.stop()
+	$HUD.show_game_over()
+	
 func new_game():
-	$StartTimer.start()
-	$player.start_pos($StartPosition.Position)
+	$startTimer.start()
+	$player.start_pos($StartPosition.position)
 	score = 0
+	#$HUD.update_score(score)
+	$HUD.show_message("Get Ready!")
+
 
 func _on_bug_timer_timeout() -> void:
-	var bug = bug_scene.instantiete()
+	var bug = bug_scene.instantiate()
 	var bug_location = $BugPath/BugPathLocation
 	bug_location.progress_ratio = randf()
 	
@@ -30,8 +32,10 @@ func _on_bug_timer_timeout() -> void:
 	add_child(bug)
 
 func _on_start_timer_timeout() -> void:
-	pass
+	$bugTimer.start()
+	$scoreTimer.start()
 
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	#$HUD.update_score(score)

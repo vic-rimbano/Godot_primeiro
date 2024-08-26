@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://assets/player_up-02.png" id="9_cyvms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytc6h"]
-radius = 47.1013
+radius = 19.5334
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dimbc"]
 animations = [{
@@ -69,13 +69,13 @@ collision_mask = 2
 script = ExtResource("1_a182v")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(432, 202)
+position = Vector2(-0.82016, 2)
 scale = Vector2(1.36, 1)
 shape = SubResource("CircleShape2D_ytc6h")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(431, 185)
-scale = Vector2(1.12781, 1)
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.443)
 sprite_frames = SubResource("SpriteFrames_dimbc")
 animation = &"move up"
 autoplay = "idle"
